@@ -1,2 +1,7 @@
-# trabalhoTrimestralDW
-Trabalho trimestral das matérias desenvolvimento web, banco de dados e análise de projeto
+Senhorio Vigono
+
+Breno Augusto do Prado
+Igor Garcia Rezende
+Victor Morais Raimundo
+
+-Descrição das funcionalidades

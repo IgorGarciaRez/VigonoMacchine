@@ -1,4 +1,4 @@
-Senhorio Vigono
+レンタル Vigono
 
 Breno Augusto do Prado
 Igor Garcia Rezende

@@ -1,1 +1,71 @@
-{\rtf1}
+/*CORES
+#009344 verde
+#cf2734 vermelho
+*/
+
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #22252c;
+}
+
+#header{
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.2) 1px 0 10px 0;
+    background-color: #ffffff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+}
+
+.menu a, .menu i{
+    color: #22252c;
+    text-decoration: none;
+    padding: 0;
+}
+
+.menu li:hover a, .menu li:hover i{
+    color: #009344;
+}
+
+.menu i{
+    margin-right: 5px;
+}
+
+#header ul{
+    list-style-type: none;
+    padding: 10px 50px;
+}
+
+#header li{
+    display: inline;
+    margin: 0 10px;
+}
+
+.logo{
+    margin: auto 0 auto 10%;
+    background-image: url('Logo Vigono Italy Sem fundo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+}
+
+.social-medias{
+    margin-left: auto;
+}
+
+.social-medias a{
+    color: #22252c;
+    font-size: 1.8rem;
+    padding: 0;
+}
+
+.social-medias a:hover{
+    color: #009344;
+}

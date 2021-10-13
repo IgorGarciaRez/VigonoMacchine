@@ -1,7 +1,10 @@
 /*CORES
 #009344 verde
 #cf2734 vermelho
+#d2ac47 dourado
 */
+
+/* ----------------- GERAL -------------------*/
 
 body{
     margin: 0;
@@ -9,16 +12,72 @@ body{
     color: #22252c;
 }
 
+.img{
+    background-repeat: no-repeat!important;
+}
+
+.float-left{
+    position: relative;
+    float: left;
+}
+
+.float-right{
+    position: relative;
+    float: left;
+}
+
+.clear{
+    clear: both;
+}
+
+.verde{
+    color: #009344;
+}
+
+.vermelho{
+    color: #cf2734;
+}
+
+.dourado{
+    color: #d2ac47;
+}
+
+.px-30{
+    padding: 0 30px;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.half{
+    width: 50%;
+}
+
+.third{
+    width: 33.3%;
+}
+
+/* ----------------- END GERAL -------------------*/
+
+/* ----------------- HEADER -------------------*/
 #header{
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.2) 1px 0 10px 0;
     background-color: #ffffff;
     font-weight: 600;
     font-size: 1.1rem;
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     position: fixed;
+    top: 0;
+    transition: top 0.5s ease;
+    z-index: 10;
 }
 
 .menu a, .menu i{
@@ -28,7 +87,7 @@ body{
 }
 
 .menu li:hover a, .menu li:hover i{
-    color: #009344;
+    color: #cf2734;
 }
 
 .menu i{
@@ -47,10 +106,9 @@ body{
 
 .logo{
     margin: auto 0 auto 10%;
-    background-image: url('Logo Vigono Italy Sem fundo.png');
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image: url('Logo1.png');
     background-size: contain;
+    background-position: center;
     display: inline-block;
     height: 70px;
     width: 70px;
@@ -67,8 +125,234 @@ body{
 }
 
 .social-medias a:hover{
-    color: #009344;
+    color: #cf2734;
 }
+
+/* ----------------- END HEADER -------------------*/
+
+/* ----------------- Aproveite -------------------*/
+
+.img-aproveite{
+    height: 300px;
+    background-size: cover;
+    background: #cf2734 url('Logo2-2.png') center;
+}
+
+.secao-aproveite{
+    margin-top: 120px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.secao-aproveite p{
+    margin-left: 40px;
+    vertical-align: middle;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.secao-aproveite p span{
+    color: #cf2734;
+}
+
+.border-bGold{
+    border-bottom: 2px solid #d2ac47;
+}
+
+/* ----------------- END Aproveite -------------------*/
+
+/*.v-border{*/
+/*    position: relative;*/
+/*    bottom: 75px;*/
+/*    font-size: 3em;*/
+/*    margin-bottom: 0;*/
+/*}*/
+
+/*.v-border span{*/
+/*    padding: 0 10px;*/
+/*    background-color: #ffffff;*/
+/*}*/
+
+/* ----------------- Como funciona -------------------*/
+
+.como-funciona{
+    background-color: #22252c;
+    color: #ffffff;
+    height: 500px;
+    font-weight: 300;
+}
+
+.como-funciona, .como-funciona .verde{
+    font-size: 1.1rem;
+}
+
+.comof-1{
+    position: relative;
+    float: left;
+    width: 45%;
+    height: 100%;
+}
+
+.comof-1 p{
+    line-height: 180%;
+    font-size: 1.5rem;
+}
+
+.botao-alugue{
+    padding: 10px 20px;
+    background-color: transparent;
+    border-radius: 20px;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    transition: 0.3s all ease;
+    text-decoration: none;
+}
+
+.botao-alugue:hover{
+    background-color: #d2ac47;
+    border-color: transparent;
+}
+
+.comof-2{
+    position: relative;
+    float: right;
+    width: 55%;
+    height: 100%;
+    background-image: url('comofunciona.jpg');
+    background-size: cover;
+}
+
+/* ----------------- END Como funciona -------------------*/
+
+/* ----------------- Alugue -------------------*/
+
+.cards{
+    display: flex;
+}
+
+.card{
+    border-radius: 20px;
+    margin: 10px 20px;
+}
+
+.carros-semanais{
+    margin-bottom: 20px;
+}
+
+.carros-semanais .card{
+    height: 350px;
+    box-shadow: 0 0 10px #009344;
+}
+
+.car-img{
+    height: 200px;
+    border-radius: 20px 20px 0 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.veja-carro, .veja-carro2{
+    padding: 10px 20px;
+    background-color: transparent;
+    border-radius: 20px;
+    border: 2px solid #009344;
+    color: #009344;
+    transition: 0.3s all ease;
+    text-decoration: none;
+}
+
+.veja-carro2{
+    border-radius: 0;
+    display: block;
+    width: 100%;
+}
+
+.veja-carro:hover, .veja-carro2:hover{
+    background-color: #009344;
+    border-color: transparent;
+    color: #ffffff;
+}
+
+/* ----------------- END Alugue -------------------*/
+
+/* ----------------- Planos -------------------*/
+
+.planos-padding{
+    padding: 15px;
+}
+
+.planos .card{
+    box-shadow: 0 0 8px #aaaaaa;
+}
+
+.planos .titulo-plano{ font-size: 3rem; font-weight: 500;}
+
+.planos .titulo-v{ font-size: 4rem; font-weight: 900;}
+
+.planos .normas{
+    color: #666666;
+    padding-bottom: 10px;
+}
+
+.planos .assine{
+    margin: 10px 0;
+    padding: 5px 20px;
+    background-color: transparent;
+    border-radius: 20px;
+    transition: 0.3s all ease;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/*--------------plano 1------------*/
+.plano1 .titulo-v, .plano1 .titulo-plano{
+    color: #cf2734;
+    margin: 10px;
+}
+
+.plano1 h3 span{
+    color: #cf2734;
+    font-size: 3rem;
+}
+
+.plano1 .assine{
+    border: 2px solid #cf2734;
+    color: #cf2734;
+}
+
+.plano1 .assine:hover{
+    background-color: #cf2734;
+    border-color: transparent;
+    color: #ffffff;
+}
+
+/*--------------plano 2------------*/
+
+.plano2 .titulo-v, .plano2 .titulo-plano{
+    color: #d2ac47;
+    margin: 10px;
+}
+
+.plano2 h3 span{
+    color: #d2ac47;
+    font-size: 3rem;
+}
+
+.plano2 .assine{
+    border: 2px solid #d2ac47;
+    color: #d2ac47;
+}
+
+.plano2 .assine:hover{
+    background-color: #d2ac47;
+    border-color: transparent;
+    color: #ffffff;
+}
+
+/* ----------------- END Planos -------------------*/
+
+/*--------------------- FAQ -----------------*/
 
 details,summary{
     outline: none;
@@ -77,23 +361,22 @@ details,summary{
 }
 
 details{
+    color: #ffffff;
     cursor: pointer;
     outline: none;
     width: 50%;
     margin: 1px auto;
-    background: white;
+    background: #22252c;
     padding: 20px;
     border-radius: 10px;
     font-size: 20px;
-    font-family: cursive;
-    box-shadow: 3px 3px 3px #009344;
+    box-shadow: 3px 3px 3px #cf2734;
     display: block;
-    border-bottom: 1px solid #e1e6ee;
 
 }
 
 details[open]{
-    background: white;
+    background: #22252c;
 
 }
 
@@ -106,10 +389,9 @@ details summary{
 }
 
 details summary::after{
-    
     content: "+";
     font-size: 30px;
-    color: #cf2734;
+    color: #ffffff;
     transition: transform .7s ease;
 
 }
@@ -117,3 +399,5 @@ details summary::after{
 details[open] summary::after{
     transform: rotate(45deg);
 }
+
+/*-------------- END FAQ -------------------*/

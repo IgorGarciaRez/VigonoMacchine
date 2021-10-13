@@ -1,9 +1,9 @@
 function SumirMenu(){
-    document.getElementById('header').style.display = "none";
+    document.getElementById('header').style.top = "-100px";
 }
 
 function AparecerMenu(){
-    document.getElementById('header').style.display = "block";
+    document.getElementById('header').style.top = "0";
 }
 
 var lastScrollTop = 0;

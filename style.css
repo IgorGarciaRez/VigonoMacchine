@@ -251,7 +251,7 @@ body{
     background-position: center;
 }
 
-.veja-carro, .veja-carro2{
+.alugue-carro, .veja-carro{
     padding: 10px 20px;
     background-color: transparent;
     border-radius: 20px;
@@ -261,13 +261,14 @@ body{
     text-decoration: none;
 }
 
-.veja-carro2{
-    border-radius: 0;
+.veja-carro{
+    border-radius: 50px;
     display: block;
     width: 100%;
 }
 
-.veja-carro:hover, .veja-carro2:hover{
+.alugue-carro:hover, .veja-carro:hover{
+    cursor: pointer;
     background-color: #009344;
     border-color: transparent;
     color: #ffffff;
@@ -295,6 +296,7 @@ body{
 }
 
 .planos .assine{
+    cursor: pointer;
     margin: 10px 0;
     padding: 5px 20px;
     background-color: transparent;
@@ -401,3 +403,75 @@ details[open] summary::after{
 }
 
 /*-------------- END FAQ -------------------*/
+
+/*---------- MODAL ----------*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 100px auto 0 auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+}
+
+.close {
+    color: #22252c;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #cf2734;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#form-planos input{
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid #cf2734;
+    padding: 5px 0;
+}
+
+#form-planos #plano-submit{
+    border-color: transparent;
+    background-color: #cf2734;
+    color: #ffffff;
+    cursor: pointer;
+}
+#form-planos #plano-submit:hover{
+    background-color: #22252c;
+}
+
+#form-carros input{
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid #009344;
+    padding: 5px 0;
+}
+
+#form-carros #carro-button{
+    border-color: transparent;
+    background-color: #009344;
+    color: #ffffff;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+#form-planos #carro-button:hover{
+    background-color: #22252c;
+}

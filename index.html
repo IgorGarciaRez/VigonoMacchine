@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <script src="script.js"></script>
+
     <link rel="shortcut icon" type="imagex/png" href="Logo1.ico">
 </head>
 <body>
@@ -24,8 +24,8 @@
                 <li><i class="fas fa-map"></i><a href="#">Planos</a></li>
             </ul>
             <ul class="social-medias">
-                <li><a href="instagram.com"><i class="fab fa-instagram-square"></i></a></li>
-                <li><a href="facebook.com"><i class="fab fa-facebook-square"></i></a></li>
+                <li><a href="https://instagram.com"><i class="fab fa-instagram-square"></i></a></li>
+                <li><a href="https://facebook.com"><i class="fab fa-facebook-square"></i></a></li>
             </ul>
         </div>
     </header>
@@ -64,25 +64,25 @@
                 <div class="card">
                     <div class="img car-img" style="background-image: url('lambo-car.jpg');"></div>
                     <h3 style="margin-bottom: 30px">Lamborghini</h3>
-                    <a href="#" class="veja-carro">Veja mais</a>
+                    <button class="alugue-carro">Eu quero!</button>
                 </div>
             </div>
             <div class="third">
                 <div class="card">
                     <div class="img car-img" style="background-image: url('ferrari-car.jpeg');"></div>
                     <h3 style="margin-bottom: 30px">Ferrari</h3>
-                    <a href="#" class="veja-carro">Veja mais</a>
+                    <button class="alugue-carro">Eu quero!</button>
                 </div>
             </div>
             <div class="third">
                 <div class="card">
                     <div class="img car-img" style="background-image: url('mustang-car.jpg');"></div>
                     <h3 style="margin-bottom: 30px">Mustang</h3>
-                    <a href="#" class="veja-carro">Veja mais</a>
+                    <button class="alugue-carro">Eu quero!</button>
                 </div>
             </div>
         </div>
-        <a href="#" class="veja-carro2">Veja todos os carros</a>
+        <a href="#" class="veja-carro">Veja todos os carros</a>
     </div>
 
     <div class="container text-center planos">
@@ -93,8 +93,7 @@
                     <div class="planos-padding">
                         <p class="titulo-v">VIGONO.</p>
                         <p class="titulo-plano">CURTO PRAZO</p>
-                        <h3>A partir de<br>
-                            R$<span>599</span>,00<br>
+                        <h3>R$<span>599</span>,00<br>
                         por semana</h3>
                         <p class="normas">Permanência mínima de 4 semanas ou cobrança de multa contratual (R$800)<br>
                             Sem cobrança por kms adicionais<br>
@@ -102,7 +101,7 @@
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semanal automática, sem troca do veículo</p>
-                        <a href="" class="assine">Assine</a>
+                        <button id="botao-plano1" class="assine">Assine</button>
                     </div>
                 </div>
             </div>
@@ -111,8 +110,7 @@
                     <div class="planos-padding">
                         <p class="titulo-v">VIGONO.</p>
                         <p class="titulo-plano">LONGO PRAZO</p>
-                        <h3>A partir de<br>
-                            R$<span>549</span>,00<br>
+                        <h3>R$<span>599</span>,00<br>
                         por semana</h3>
                         <p class="normas">Permanência mínima de 6 meses ou cobrança de multa contratual (R$1.600)<br>
                             Sem cobrança por kms adicionais<br>
@@ -120,7 +118,7 @@
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semestral não automática, com troca do veículo</p>
-                        <a href="" class="assine">Assine</a>
+                        <button id="botao-plano2" class="assine">Assine</button>
                     </div>
                 </div>
             </div>
@@ -161,5 +159,47 @@
         </details>
     </div>
 
+    <div id="modal-planos" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Preencha o formulário: </h2> <hr>
+            <form id="form-planos">
+                <label for="plano-pnome">Nome:</label><br>
+                <input type="text" id="plano-pnome" name="plano-pnome"><br>
+                <label for="plano-snome">Sobrenome:</label><br>
+                <input type="text" id="plano-snome" name="plano-snome"><br>
+                <label for="plano-cpfform">CPF:</label><br>
+                <input type="text" id="plano-cpfform" name="plano-cpfform"><br>
+                <label for="plano-telform">Telefone:</label><br>
+                <input type="text" id="plano-telform" name="plano-telform"><br>
+                <label for="plano-creditC">Cartao de Credito:</label><br>
+                <input type="text" id="plano-creditC" name="plano-creditC"><br>
+                <input type="submit" id="plano-submit" value="Enviar" style="margin-top: 1rem">
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-carros" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Preencha o formulário: </h2> <hr>
+            <form id="form-carros">
+                <label for="carro-pnome">Nome:</label><br>
+                <input type="text" id="carro-pnome" name="carro-pnome"><br>
+                <label for="carro-snome">Sobrenome:</label><br>
+                <input type="text" id="carro-snome" name="carro-snome"><br>
+                <label for="carro-cpfform">CPF:</label><br>
+                <input type="text" id="carro-cpfform" name="carro-cpfform"><br>
+                <label for="carro-telform">Telefone:</label><br>
+                <input type="text" id="carro-telform" name="carro-telform"><br>
+                <label for="carro-data">Data de retirada:</label><br>
+                <input type="text" id="carro-data" name="carro-data"><br>
+                <input type="button" id="carro-button" onclick="GerarSenha()" value="Gerar Senha" style="margin-top: 1rem"><br>
+                <input type="text" id="senha-carro" name="senha-carro">
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

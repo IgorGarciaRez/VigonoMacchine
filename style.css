@@ -69,3 +69,51 @@ body{
 .social-medias a:hover{
     color: #009344;
 }
+
+details,summary{
+    outline: none;
+    user-select: none;
+
+}
+
+details{
+    cursor: pointer;
+    outline: none;
+    width: 50%;
+    margin: 1px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: cursive;
+    box-shadow: 3px 3px 3px #009344;
+    display: block;
+    border-bottom: 1px solid #e1e6ee;
+
+}
+
+details[open]{
+    background: white;
+
+}
+
+details summary{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+details summary::after{
+    
+    content: "+";
+    font-size: 30px;
+    color: #cf2734;
+    transition: transform .7s ease;
+
+}
+
+details[open] summary::after{
+    transform: rotate(45deg);
+}

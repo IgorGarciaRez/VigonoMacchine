@@ -239,7 +239,7 @@ body{
     margin-bottom: 20px;
 }
 
-.carros-semanais .card{
+.carros-semanais .card, .carros .card{
     height: 350px;
     box-shadow: 0 0 10px #009344;
 }
@@ -366,19 +366,13 @@ details{
     color: #ffffff;
     cursor: pointer;
     outline: none;
-    width: 50%;
+    width: 50%!important;
     margin: 1px auto;
     background: #22252c;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 2px;
     font-size: 20px;
-    box-shadow: 3px 3px 3px #cf2734;
-    display: block;
-
-}
-
-details[open]{
-    background: #22252c;
+    display: flex;
 
 }
 
@@ -395,7 +389,6 @@ details summary::after{
     font-size: 30px;
     color: #ffffff;
     transition: transform .7s ease;
-
 }
 
 details[open] summary::after{
@@ -474,4 +467,81 @@ details[open] summary::after{
 }
 #form-planos #carro-button:hover{
     background-color: #22252c;
+}
+
+/*--------------------------------------------------------------------------------
+-----------------QUEM SOMOS*/
+
+.cars-anm {
+    animation: scroll 70s linear infinite;
+    background-image: url('cars-anm.png');
+    background-repeat: repeat-x;
+    background-size: contain;
+    color: #eee;
+    height: 100px;
+    min-width: 360px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+
+}
+
+@keyframes scroll {
+    100%{
+        background-position: -3000px 0;
+    }
+}
+
+@media (prefers-reduced-motion) {
+    .wrapper {
+        animation: scroll 200s linear infinite;
+    }
+}
+
+.content-qs{
+    font-size: 1.2rem;
+    margin-bottom: 100px;
+}
+
+.bg-top{
+    background-color: #009344;
+    padding: 42px 0;
+}
+
+/*----------------------------------------------------------------------------------
+------------------------------CARROS */
+.carros{
+    margin-top: 100px;
+}
+
+/*----------------
+----------------------------------------PLANOS*/
+.img-drive{
+    background-image: url('man_Driving.png');
+    background-size: contain;
+    height: 300px;
+}
+
+.texto-planos{
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.texto2-planos{
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.texto-planos span, .texto2-planos span{
+    color: #cf2734;
+}
+
+.texto-img-planos{
+    display: flex;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
 }

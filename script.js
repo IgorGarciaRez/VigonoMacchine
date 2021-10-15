@@ -22,22 +22,14 @@ window.addEventListener("scroll", function(){
 
 // ---- MODAL --------------
 var modalP = document.getElementById("modal-planos");
-var btn1 = document.getElementById("botao-plano1");
-var btn2 = document.getElementById("botao-plano2");
-var span1 = document.getElementsByClassName("close")[0];
 
-btn1.onclick = function() {
+function AparecerModalP() {
     modalP.style.display = "block";
 }
 
-btn2.onclick = function() {
-    modalP.style.display = "block";
-}
-
-span1.onclick = function() {
+function SumirModalP() {
     modalP.style.display = "none";
 }
-
 window.onclick = function(event) {
     if (event.target == modalP) {
         modalP.style.display = "none";
@@ -47,10 +39,6 @@ window.onclick = function(event) {
 /*-----------*/
 
 var modalC = document.getElementById("modal-carros");
-var btnC1 = document.getElementsByClassName("alugue-carro")[0];
-var btnC2 = document.getElementsByClassName("alugue-carro")[1];
-var btnC3 = document.getElementsByClassName("alugue-carro")[2];
-var span2 = document.getElementsByClassName("close")[1];
 
 function GerarSenha(){
     var senha = ""
@@ -61,19 +49,11 @@ function GerarSenha(){
     document.getElementById("senha-carro").value = senha
 }
 
-btnC1.onclick = function() {
+function AparecerModalC() {
     modalC.style.display = "block";
 }
 
-btnC2.onclick = function() {
-    modalC.style.display = "block";
-}
-
-btnC3.onclick = function() {
-    modalC.style.display = "block";
-}
-
-span2.onclick = function() {
+function SumirModalC() {
     modalC.style.display = "none";
 }
 

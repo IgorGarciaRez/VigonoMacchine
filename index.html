@@ -19,8 +19,8 @@
             <a class="logo img" href="index.html"></a>
             <ul class="menu">
                 <li><a href="index.html">Home</a></li>
-                <li><i class="fas fa-users"></i><a href="#">Quem Somos</a></li>
-                <li><i class="fas fa-car"></i><a href="#">Carros</a></li>
+                <li><i class="fas fa-users"></i><a href="quemSomos.html">Quem Somos</a></li>
+                <li><i class="fas fa-car"></i><a href="carros.html">Carros</a></li>
                 <li><i class="fas fa-map"></i><a href="#">Planos</a></li>
             </ul>
             <ul class="social-medias">
@@ -64,25 +64,25 @@
                 <div class="card">
                     <div class="img car-img" style="background-image: url('lambo-car.jpg');"></div>
                     <h3 style="margin-bottom: 30px">Lamborghini</h3>
-                    <button class="alugue-carro">Eu quero!</button>
+                    <button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>
                 </div>
             </div>
             <div class="third">
                 <div class="card">
                     <div class="img car-img" style="background-image: url('ferrari-car.jpeg');"></div>
                     <h3 style="margin-bottom: 30px">Ferrari</h3>
-                    <button class="alugue-carro">Eu quero!</button>
+                    <button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>
                 </div>
             </div>
             <div class="third">
                 <div class="card">
                     <div class="img car-img" style="background-image: url('mustang-car.jpg');"></div>
                     <h3 style="margin-bottom: 30px">Mustang</h3>
-                    <button class="alugue-carro">Eu quero!</button>
+                    <button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>
                 </div>
             </div>
         </div>
-        <a href="#" class="veja-carro">Veja todos os carros</a>
+        <a href="carros.html" class="veja-carro">Veja todos os carros</a>
     </div>
 
     <div class="container text-center planos">
@@ -101,7 +101,7 @@
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semanal automática, sem troca do veículo</p>
-                        <button id="botao-plano1" class="assine">Assine</button>
+                        <button onclick="AparecerModalP()" class="assine">Assine</button>
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semestral não automática, com troca do veículo</p>
-                        <button id="botao-plano2" class="assine">Assine</button>
+                        <button onclick="AparecerModalP()" class="assine">Assine</button>
                     </div>
                 </div>
             </div>
@@ -161,7 +161,7 @@
 
     <div id="modal-planos" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span onclick="SumirModalP()" class="close">&times;</span>
             <h2>Preencha o formulário: </h2> <hr>
             <form id="form-planos">
                 <label for="plano-pnome">Nome:</label><br>
@@ -181,7 +181,7 @@
 
     <div id="modal-carros" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span onclick="SumirModalC()" class="close">&times;</span>
             <h2>Preencha o formulário: </h2> <hr>
             <form id="form-carros">
                 <label for="carro-pnome">Nome:</label><br>
@@ -201,5 +201,6 @@
     </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>

@@ -72,8 +72,6 @@ body{
     background-color: #ffffff;
     font-weight: 600;
     font-size: 1.1rem;
-    background-size: cover;
-    background-position: center;
     position: fixed;
     top: 0;
     transition: top 0.5s ease;
@@ -106,7 +104,7 @@ body{
 
 .logo{
     margin: auto 0 auto 10%;
-    background-image: url('Logo1.png');
+    background-image: url('imgs/Logos/Logo1.png');
     background-size: contain;
     background-position: center;
     display: inline-block;
@@ -135,7 +133,7 @@ body{
 .img-aproveite{
     height: 300px;
     background-size: cover;
-    background: #cf2734 url('Logo2-2.png') center;
+    background: #cf2734 url('imgs/Logos/Logo2-2.png') center;
 }
 
 .secao-aproveite{
@@ -218,7 +216,7 @@ body{
     float: right;
     width: 55%;
     height: 100%;
-    background-image: url('comofunciona.jpg');
+    background-image: url('imgs/comofunciona.jpg');
     background-size: cover;
 }
 
@@ -385,14 +383,15 @@ details summary{
 }
 
 details summary::after{
-    content: "+";
+    content: "<";
     font-size: 30px;
+    font-weight: 100;
     color: #ffffff;
     transition: transform .7s ease;
 }
 
 details[open] summary::after{
-    transform: rotate(45deg);
+    transform: rotate(-90deg);
 }
 
 /*-------------- END FAQ -------------------*/
@@ -474,7 +473,7 @@ details[open] summary::after{
 
 .cars-anm {
     animation: scroll 70s linear infinite;
-    background-image: url('cars-anm.png');
+    background-image: url('imgs/cars-anm.png');
     background-repeat: repeat-x;
     background-size: contain;
     color: #eee;
@@ -504,6 +503,7 @@ details[open] summary::after{
 .content-qs{
     font-size: 1.2rem;
     margin-bottom: 100px;
+    text-align: justify;
 }
 
 .bg-top{
@@ -520,7 +520,7 @@ details[open] summary::after{
 /*----------------
 ----------------------------------------PLANOS*/
 .img-drive{
-    background-image: url('man_Driving.png');
+    background-image: url('imgs/man_Driving.png');
     background-size: contain;
     height: 300px;
 }
@@ -544,4 +544,72 @@ details[open] summary::after{
     text-align: left;
     font-size: 1.1rem;
     font-weight: 500;
+}
+
+/*MAPA*/
+
+.mapa{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/*Footer*/
+#footer{
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.2) 1px 0 10px 0;
+    background-color: #22252c;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.footer a, .footer i{
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0;
+}
+
+.footer li:hover a, .footer li:hover i{
+    color: #aaaaaa;
+}
+
+.footer i{
+    margin-right: 5px;
+}
+
+#footer ul{
+    text-align: center;
+    list-style-type: none;
+    padding: 30px 50px;
+    margin-bottom: 0;
+}
+
+#footer li{
+    display: inline;
+    margin: 0 10px;
+}
+
+#form-pergunta{
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#form-pergunta input, #form-pergunta textarea{
+    width: 100%;
+}
+
+.botao-pergunta{
+    background-color: #22252c;
+    color: #ffffff;
+    padding: 10px 0;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.botao-pergunta:hover{
+    background-color: #ffffff;
+    color: #22252c;
+    border: 2px solid #22252c;
 }

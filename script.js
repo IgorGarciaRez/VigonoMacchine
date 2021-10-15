@@ -62,4 +62,3 @@ window.onclick = function(event) {
         modalC.style.display = "none";
     }
 }
-

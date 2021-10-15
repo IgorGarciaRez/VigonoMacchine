@@ -65,7 +65,7 @@
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semanal automática, sem troca do veículo</p>
-                        <button id="botao-plano1" class="assine">Assine</button>
+                        <button onclick="AparecerModalP()" id="botao-plano1" class="assine">Assine</button>
                     </div>
                 </div>
             </div>
@@ -82,10 +82,30 @@
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semestral não automática, com troca do veículo</p>
-                        <button id="botao-plano2" class="assine">Assine</button>
+                        <button onclick="AparecerModalP()" id="botao-plano2" class="assine">Assine</button>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="modal-planos" class="modal">
+        <div class="modal-content">
+            <span onclick="SumirModalP()" class="close">&times;</span>
+            <h2>Preencha o formulário: </h2> <hr>
+            <form id="form-planos">
+                <label for="plano-pnome">Nome:</label><br>
+                <input type="text" id="plano-pnome" name="plano-pnome"><br>
+                <label for="plano-snome">Sobrenome:</label><br>
+                <input type="text" id="plano-snome" name="plano-snome"><br>
+                <label for="plano-cpfform">CPF:</label><br>
+                <input type="text" id="plano-cpfform" name="plano-cpfform"><br>
+                <label for="plano-telform">Telefone:</label><br>
+                <input type="text" id="plano-telform" name="plano-telform"><br>
+                <label for="plano-creditC">Cartao de Credito:</label><br>
+                <input type="text" id="plano-creditC" name="plano-creditC"><br>
+                <input type="submit" id="plano-submit" value="Enviar" style="margin-top: 1rem">
+            </form>
         </div>
     </div>
 
@@ -101,5 +121,6 @@
     </footer>
 
     <script src="script.js"></script>
+
 </body>
 </html>

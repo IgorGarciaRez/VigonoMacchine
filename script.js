@@ -21,33 +21,24 @@ window.addEventListener("scroll", function(){
 });
 
 // ---- MODAL --------------
-var modalP = document.getElementById("modal-planos");
+var modalL = document.getElementById("modal-login");
 
-function AparecerModalP() {
-    modalP.style.display = "block";
+function AparecerModalL() {
+    modalL.style.display = "block";
 }
 
-function SumirModalP() {
-    modalP.style.display = "none";
+function SumirModalL() {
+    modalL.style.display = "none";
 }
 window.onclick = function(event) {
-    if (event.target == modalP) {
-        modalP.style.display = "none";
+    if (event.target == modalL) {
+        modalL.style.display = "none";
     }
 }
 
 /*-----------*/
 
-var modalC = document.getElementById("modal-carros");
-
-function GerarSenha(){
-    var senha = ""
-    var hex = "0123456789ABCDEF"
-    for (var i = 0; i < 6; i++ ){
-        senha += hex[Math.floor(Math.random() * hex.length)]
-    }
-    document.getElementById("senha-carro").value = senha
-}
+var modalC = document.getElementById("modal-cadastro");
 
 function AparecerModalC() {
     modalC.style.display = "block";

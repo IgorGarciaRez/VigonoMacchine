@@ -14,6 +14,9 @@
     <link rel="shortcut icon" type="imagex/png" href="imgs/Logos/Logo1.ico">
 </head>
 <body>
+    <?php 
+        $logado = 0;
+    ?>
     <header id="header" class="img">
         <div style="display: flex;">
             <a class="logo img" href="index.html"></a>
@@ -22,6 +25,7 @@
                 <li><a href="quemSomos.html"><i class="fas fa-users"></i>Quem Somos</a></li>
                 <li><a href="carros.html"><i class="fas fa-car"></i>Carros</a></li>
                 <li><a href="planos.html"><i class="fas fa-map"></i>Planos</a></li>
+                <li><button onclick="AparecerModalL()" class="botao-login"> <i class="fas fa-sign-in-alt"></i>Login</button>
             </ul>
             <ul class="social-medias">
                 <li><a target="_blank" href="https://instagram.com"><i class="fab fa-instagram-square"></i></a></li>
@@ -64,21 +68,21 @@
                 <div class="card">
                     <div class="img car-img" style="background-image: url('imgs/cars/lambo-car.jpg');"></div>
                     <h3 style="margin-bottom: 30px">Lamborghini</h3>
-                    <button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>
+                    <button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>
                 </div>
             </div>
             <div class="third">
                 <div class="card">
                     <div class="img car-img" style="background-image: url('imgs/cars/ferrari-car.jpeg');"></div>
                     <h3 style="margin-bottom: 30px">Ferrari</h3>
-                    <button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>
+                    <button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>
                 </div>
             </div>
             <div class="third">
                 <div class="card">
                     <div class="img car-img" style="background-image: url('imgs/cars/mustang-car.jpg');"></div>
                     <h3 style="margin-bottom: 30px">Mustang</h3>
-                    <button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>
+                    <button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>
                 </div>
             </div>
         </div>
@@ -101,7 +105,7 @@
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semanal automática, sem troca do veículo</p>
-                        <button onclick="AparecerModalP()" class="assine">Assine</button>
+                        <button onclick="AparecerModalL()" class="assine">Assine</button>
                     </div>
                 </div>
             </div>
@@ -118,7 +122,7 @@
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semestral não automática, com troca do veículo</p>
-                        <button onclick="AparecerModalP()" class="assine">Assine</button>
+                        <button onclick="AparecerModalL()" class="assine">Assine</button>
                     </div>
                 </div>
             </div>
@@ -161,43 +165,45 @@
         </form>
     </div>
 
-    <div id="modal-planos" class="modal">
+    <?php ?>
+    <div id="modal-login" class="modal">
+    <?php 
+        if($logado == 1){
+            echo '<script type=text/javascript>SumirModalL(); window.alert("Pedido feito com sucesso! Cheque seu email para confirmar e agendar a data.")</script>';
+        }
+    ?>
         <div class="modal-content">
-            <span onclick="SumirModalP()" class="close">&times;</span>
-            <h2>Preencha o formulário: </h2> <hr>
-            <form id="form-planos">
+            <span onclick="SumirModalL()" class="close">&times;</span>
+            <h2>Preencha o Login: </h2> <hr>
+            <form id="form-login">
                 <label for="plano-pnome">Nome:</label><br>
-                <input type="text" id="plano-pnome" name="plano-pnome"><br>
-                <label for="plano-snome">Sobrenome:</label><br>
-                <input type="text" id="plano-snome" name="plano-snome"><br>
-                <label for="plano-cpfform">CPF:</label><br>
-                <input type="text" id="plano-cpfform" name="plano-cpfform"><br>
-                <label for="plano-telform">Telefone:</label><br>
-                <input type="text" id="plano-telform" name="plano-telform"><br>
-                <label for="plano-creditC">Cartao de Credito:</label><br>
-                <input type="text" id="plano-creditC" name="plano-creditC"><br>
-                <input type="submit" id="plano-submit" value="Enviar" style="margin-top: 1rem">
+                <input type="text" id="nome-login" name="nome"><br>
+                <label for="plano-snome">Senha:</label><br>
+                <input type="text" id="senha-login" name="Senha"><br>
+
+                <input type="submit" id="plano-submit" value="Logar" style="margin-top: 1rem">
+
+                <button onclick="AparecerModalC()" class="botao-cadastro">Cadastrar</button>
             </form>
         </div>
     </div>
 
-    <div id="modal-carros" class="modal">
+    <div id="modal-cadastro" class="modal">
         <div class="modal-content">
             <span onclick="SumirModalC()" class="close">&times;</span>
-            <h2>Preencha o formulário: </h2> <hr>
-            <form id="form-carros">
-                <label for="carro-pnome">Nome:</label><br>
-                <input type="text" id="carro-pnome" name="carro-pnome"><br>
-                <label for="carro-snome">Sobrenome:</label><br>
-                <input type="text" id="carro-snome" name="carro-snome"><br>
-                <label for="carro-cpfform">CPF:</label><br>
-                <input type="text" id="carro-cpfform" name="carro-cpfform"><br>
-                <label for="carro-telform">Telefone:</label><br>
-                <input type="text" id="carro-telform" name="carro-telform"><br>
-                <label for="carro-data">Data de retirada:</label><br>
-                <input type="text" id="carro-data" name="carro-data"><br>
-                <input type="button" id="carro-button" onclick="GerarSenha()" value="Gerar Senha" style="margin-top: 1rem"><br>
-                <input type="text" id="senha-carro" name="senha-carro">
+            <h2>Preencha o formulário de Cadastro: </h2> <hr>
+            <form id="form-cadastro" name="cadCliente" method="post" action="inserirCliente.php">
+                <label for="nomeC">Nome:</label><br>
+                <input type="text" name="nomeC"><br>
+                <label for="cpf">CPF:</label><br>
+                <input type="text" name="cpf"><br>
+                <label for="email">Email:</label><br>
+                <input type="text" name="email"><br>
+                <label for="senhaC">Senha:</label><br>
+                <input type="text" name="senhaC"><br>
+
+
+                <input type="submit" name="botao-enviar-cadastro">
             </form>
         </div>
     </div>

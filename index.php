@@ -14,8 +14,13 @@
     <link rel="shortcut icon" type="imagex/png" href="imgs/Logos/Logo1.ico">
 </head>
 <body>
-    <?php 
-        $logado = 0;
+    <?php
+    $login_cookie = $_COOKIE['Cpf'];
+    if(isset($login_cookie)){
+        $logado = true;
+      }else{
+        $logado = false;
+      }
     ?>
     <header id="header" class="img">
         <div style="display: flex;">
@@ -26,6 +31,9 @@
                 <li><a href="carros.html"><i class="fas fa-car"></i>Carros</a></li>
                 <li><a href="planos.html"><i class="fas fa-map"></i>Planos</a></li>
                 <li><button onclick="AparecerModalL()" class="botao-login"> <i class="fas fa-sign-in-alt"></i>Login</button>
+                <li><span><?php
+                    if($logado)echo "Logado";
+                ?></span></li>
             </ul>
             <ul class="social-medias">
                 <li><a target="_blank" href="https://instagram.com"><i class="fab fa-instagram-square"></i></a></li>
@@ -165,7 +173,6 @@
         </form>
     </div>
 
-    <?php ?>
     <div id="modal-login" class="modal">
     <?php 
         if($logado == 1){
@@ -175,15 +182,15 @@
         <div class="modal-content">
             <span onclick="SumirModalL()" class="close">&times;</span>
             <h2>Preencha o Login: </h2> <hr>
-            <form id="form-login">
-                <label for="plano-pnome">Nome:</label><br>
-                <input type="text" id="nome-login" name="nome"><br>
-                <label for="plano-snome">Senha:</label><br>
-                <input type="text" id="senha-login" name="Senha"><br>
+            <form id="form-login" method="POST" action="login.php">
+                <label for="Cpf">Cpf:</label><br>
+                <input type="text" id="login-Cpf" name="Cpf"><br>
+                <label for="Senha">Senha:</label><br>
+                <input type="password" id="senha-login" name="Senha" minlength="8" required><br>
 
-                <input type="submit" id="plano-submit" value="Logar" style="margin-top: 1rem">
+                <input type="submit" id="logar" value="Logar" name="logar" style="margin-top: 1rem">
 
-                <button onclick="AparecerModalC()" class="botao-cadastro">Cadastrar</button>
+                <input type="button" onclick="SumirModalL(); AparecerModalC()" value="Cadastrar" class="botao-cadastro">
             </form>
         </div>
     </div>
@@ -192,15 +199,15 @@
         <div class="modal-content">
             <span onclick="SumirModalC()" class="close">&times;</span>
             <h2>Preencha o formulário de Cadastro: </h2> <hr>
-            <form id="form-cadastro" name="cadCliente" method="post" action="inserirCliente.php">
-                <label for="nomeC">Nome:</label><br>
-                <input type="text" name="nomeC"><br>
-                <label for="cpf">CPF:</label><br>
-                <input type="text" name="cpf"><br>
-                <label for="email">Email:</label><br>
-                <input type="text" name="email"><br>
-                <label for="senhaC">Senha:</label><br>
-                <input type="text" name="senhaC"><br>
+            <form id="form-cadastro" name="cadCliente" method="POST" action="cadastro.php">
+                <label for="nome">Nome:</label><br>
+                <input type="text" name="nome"><br>
+                <label for="Cpf">CPF:</label><br>
+                <input type="text" name="Cpf"><br>
+                <label for="Email">Email:</label><br>
+                <input type="text" name="Email"><br>
+                <label for="Senha">Senha:</label><br>
+                <input type="password" name="Senha" minlength="8" required><br>
 
 
                 <input type="submit" name="botao-enviar-cadastro">

@@ -44,13 +44,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/75e8e357fd.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-    <link rel="shortcut icon" type="imagex/png" href="imgs/Logos/Logo1.ico">
+    <link rel="shortcut icon" type="imagex/png" href="../imgs/Logos/Logo1.ico">
 </head>
 <body>
     
@@ -190,13 +190,13 @@
     </footer>
 
     <script type="text/javascript">
-        var url = "http://localhost/VigonoMacchine/planos.php";
+        var url = "http://localhost/VigonoMacchine/pags/planos.php";
         if(window.location.href != url){
-            window.location.replace("http://localhost/VigonoMacchine/planos.php");
+            window.location.replace("http://localhost/VigonoMacchine/pags/planos.php");
         }
     </script>
 
-    <script src="script.js"></script>
+    <script src="../javascript/script.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 </body>

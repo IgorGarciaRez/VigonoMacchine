@@ -104,7 +104,7 @@ body{
 
 .logo{
     margin: auto 0 auto 10%;
-    background-image: url('imgs/Logos/Logo1.png');
+    background-image: url('../imgs/Logos/Logo1.png');
     background-size: contain;
     background-position: center;
     display: inline-block;
@@ -133,7 +133,7 @@ body{
 .img-aproveite{
     height: 300px;
     background-size: cover;
-    background: #cf2734 url('imgs/Logos/Logo2-2.png') center;
+    background: #cf2734 url('../imgs/Logos/Logo2-2.png') center;
 }
 
 .secao-aproveite{
@@ -216,7 +216,7 @@ body{
     float: right;
     width: 55%;
     height: 100%;
-    background-image: url('imgs/comofunciona.jpg');
+    background-image: url('../imgs/comofunciona.jpg');
     background-size: cover;
 }
 
@@ -473,7 +473,7 @@ details[open] summary::after{
 
 .cars-anm {
     animation: scroll 70s linear infinite;
-    background-image: url('imgs/cars-anm.png');
+    background-image: url('../imgs/cars-anm.png');
     background-repeat: repeat-x;
     background-size: contain;
     color: #eee;
@@ -520,7 +520,7 @@ details[open] summary::after{
 /*----------------
 ----------------------------------------PLANOS*/
 .img-drive{
-    background-image: url('imgs/man_Driving.png');
+    background-image: url('../imgs/man_Driving.png');
     background-size: contain;
     height: 300px;
 }

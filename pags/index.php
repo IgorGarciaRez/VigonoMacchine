@@ -97,7 +97,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/75e8e357fd.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,7 +158,7 @@
         <div class="cards">
             <div class="third">
                 <div class="card">
-                    <div class="img car-img" style="background-image: url('imgs/cars/lambo-car.jpg');"></div>
+                    <div class="img car-img" style="background-image: url('../imgs/cars/lambo-car.jpg');"></div>
                     <h3 style="margin-bottom: 30px">Lamborghini</h3>
                     <?php
                     //LOGICA DE LOCACAO
@@ -169,7 +169,7 @@
             </div>
             <div class="third">
                 <div class="card">
-                    <div class="img car-img" style="background-image: url('imgs/cars/ferrari-car.jpeg');"></div>
+                    <div class="img car-img" style="background-image: url('../imgs/cars/ferrari-car.jpeg');"></div>
                     <h3 style="margin-bottom: 30px">Ferrari</h3>
                     <?php
                     //LOGICA DE LOCACAO
@@ -180,7 +180,7 @@
             </div>
             <div class="third">
                 <div class="card">
-                    <div class="img car-img" style="background-image: url('imgs/cars/mustang-car.jpg');"></div>
+                    <div class="img car-img" style="background-image: url('../imgs/cars/mustang-car.jpg');"></div>
                     <h3 style="margin-bottom: 30px">Mustang</h3>
                     <?php
                     //LOGICA DE LOCACAO
@@ -315,13 +315,13 @@
     </footer>
 
     <script type="text/javascript">
-        var url = "http://localhost/VigonoMacchine/index.php";
+        var url = "http://localhost/VigonoMacchine/pags/index.php";
         if(window.location.href != url){
-            window.location.replace("http://localhost/VigonoMacchine/index.php");
+            window.location.replace("http://localhost/VigonoMacchine/pags/index.php");
         }
     </script>
 
-    <script src="script.js"></script>
+    <script src="../javascript/script.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 </body>

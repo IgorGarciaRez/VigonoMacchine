@@ -6,6 +6,6 @@
 ##
 
 Descrição das funcionalidades:
-- O usuário poderá contratar um carro, informando seu nome, data de nascimento, cpf, numero do cartao e a data de retirada do veículo
-- O usuário podera assinar um plano de acordo com seus interesses, informando seu nome, data de nascimento, cpf e o numero do cartao
-- O usuário poderá deixar um feedback, informando seu nome e o feedback
+- O usuário poderá contratar um carro, informando seu nome, data de nascimento, cpf, e o veículo será reservado por um mês inteiro
+- O usuário podera assinar um plano de acordo com seus interesses, informando seus dados de login
+- O usuário podera se cadastrar, logar(com cpf e senha) e deslogar

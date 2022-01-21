@@ -20,6 +20,14 @@
         $logado = false;
     }
 
+    function redirect(){
+        echo "<script language='javascript' type='text/javascript'>
+            alert('$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" != "index.php')</script>";
+        //if("$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" != "index.php"){}
+        //header('Location: ' . "index.php", true);
+        //die();
+    }
+
 
     function add_months($months, DateTime $dateObject) 
     {
@@ -56,6 +64,14 @@
         if (!$connect->query($sqlquery) == true) {
             echo "Error: " . $sqlquery . "<br>" . $connect->error;
         }
+    }
+
+    if (isset($_GET['lamborghini'])) {
+        alugarCarro($lamboID);
+    }elseif(isset($_GET['ferrari'])) {
+        alugarCarro($ferrariID);
+    }elseif(isset($_GET['mustang'])) {
+        alugarCarro($mustangID);
     }
 ?>
 
@@ -134,27 +150,9 @@
                     <?php
                     
                     if($logado == true){
-                        echo '<button onclick="alugarCarro('.$ferrariID.')" class="alugue-carro">Eu quero! (1 mês de hoje)</button>';
-
-
-                        //echo "<a href='index.php?alugue_carro=true'>Eu quero! (1 mês de hoje)</a>";
-                        // if($pegarCarroVar = true){
-                        //     $sqlquery = "INSERT INTO `locacao`(`DataInicio`, `DataFim`, `cliente_idCliente`, `carro_idCarro`) VALUES 
-                        //         (".date('Y/m/d'). ",".date('Y/m/d').",'$loginId', '1')";
-                        //     echo "<script language='javascript' type='text/javascript'>
-                        //         alert('".date('Y/m/d')."')</script>";
-                        //     if ($connect->query($sqlquery) === true) {
-                        //         echo "<script language='javascript' type='text/javascript'>
-                        //         alert('conexao certa');</script>";
-                        //     } else {
-                        //         echo "Error: " . $sqlquery . "<br>" . $connect->error;
-                        //     }
-                        // }else{
-                        //     echo "<script language='javascript' type='text/javascript'>
-                        //         alert('No :(')</script>";
-                        // }
-
-
+                        //echo '<button onclick="alugarCarroBotao(1)" class="alugue-carro">Eu quero! (1 mês de hoje)</button>';
+                        echo "<a href='index.php?lamborghini=true'>Eu quero!</a>";
+                        
                     }else{
                         echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero! (2 mês de hoje)</button>';
                     }
@@ -306,25 +304,14 @@
     </footer>
 
     <script type="text/javascript">
-        var alugarCarroBotao = function(numero){
-            switch(numero){
-                case 1:
-                    <?php alugarCarro($ferrariID);?>
-                    break;
-                case 2:
-                    <?php alugarCarro($lamboID); ?>
-                    break;
-                case 3:
-                    <?php alugarCarro($mustangID); ?>
-                    break;
-                default:
-                    alert("Algo de errado com o codigo :(")
-            }
-            
+        function alugarCarroBotao(numero){
+            $.ajax({url:"alugue.php", success:function(numero){console.log(numero)}
+            })
         }
     </script>
 
     <script src="script.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 </body>
 </html>

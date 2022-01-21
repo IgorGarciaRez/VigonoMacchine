@@ -1,3 +1,65 @@
+<?php
+    session_start();
+
+    //echo $_SESSION['sessaoId'];
+    //$login_cookie = $_COOKIE['Cpf'];
+
+    $ferrariID = 1;
+    $lamboID = 2;
+    $mustangID = 3;
+
+    $connect = mysqli_connect('localhost','root','', 'vigono');
+    if ($connect->connect_error) {
+        die("Connection failed: " 
+            . $connect->connect_error);
+    }
+    if(isset($_SESSION['sessaoId'])){
+        $logado = true;
+        $loginId = $_SESSION['sessaoId'];
+    }else{
+        $logado = false;
+    }
+
+
+    function add_months($months, DateTime $dateObject) 
+    {
+        $next = new DateTime($dateObject->format('Y-m-d'));
+        $next->modify('last day of +'.$months.' month');
+        if($dateObject->format('d') > $next->format('d')) {
+            return $dateObject->diff($next);
+        } else {
+            return new DateInterval('P'.$months.'M');
+        }
+    }
+
+    function endCycle($d1, $months)
+    {
+        $date = new DateTime($d1);
+        $newDate = $date->add(add_months($months, $date));
+        $newDate->sub(new DateInterval('P1D'));
+        $dateReturned = $newDate->format('Y-m-d'); 
+        return $dateReturned;
+    }
+
+
+    function alugarCarro($numeroCarro){
+        global $loginId, $connect;
+        $data = date("Y/m/d");
+        
+        $startDate = $data;
+        $datafinal = endCycle($startDate, 1);
+
+        $sqlquery = "INSERT INTO `locacao`(`DataInicio`, `DataFim`, `cliente_idCliente`, `carro_idCarro`) VALUES 
+            ('$data', '$datafinal', '$loginId', '$numeroCarro')";
+        echo "<script language='javascript' type='text/javascript'>
+            alert('você poderá alugar o carro em um período de 1 mês a partir de hoje($datafinal)')</script>";
+        if (!$connect->query($sqlquery) == true) {
+            echo "Error: " . $sqlquery . "<br>" . $connect->error;
+        }
+    }
+?>
+
+
 <html lang="pt">
 <head>
     <title>Vigono Macchine</title>
@@ -14,14 +76,7 @@
     <link rel="shortcut icon" type="imagex/png" href="imgs/Logos/Logo1.ico">
 </head>
 <body>
-    <?php
-    $login_cookie = $_COOKIE['Cpf'];
-    if(isset($login_cookie)){
-        $logado = true;
-      }else{
-        $logado = false;
-      }
-    ?>
+    
     <header id="header" class="img">
         <div style="display: flex;">
             <a class="logo img" href="index.html"></a>
@@ -30,10 +85,10 @@
                 <li><a href="quemSomos.html"><i class="fas fa-users"></i>Quem Somos</a></li>
                 <li><a href="carros.html"><i class="fas fa-car"></i>Carros</a></li>
                 <li><a href="planos.html"><i class="fas fa-map"></i>Planos</a></li>
-                <li><button onclick="AparecerModalL()" class="botao-login"> <i class="fas fa-sign-in-alt"></i>Login</button>
-                <li><span><?php
-                    if($logado)echo "Logado";
-                ?></span></li>
+                <li><?php
+                    if($logado)echo '<a href="logout.php?token='.session_id().'">Sair</a>';
+                    else{echo "<button onclick='AparecerModalL()' class='botao-login'> <i class='fas fa-sign-in-alt'></i>Login</button>";}
+                ?></li>
             </ul>
             <ul class="social-medias">
                 <li><a target="_blank" href="https://instagram.com"><i class="fab fa-instagram-square"></i></a></li>
@@ -76,7 +131,36 @@
                 <div class="card">
                     <div class="img car-img" style="background-image: url('imgs/cars/lambo-car.jpg');"></div>
                     <h3 style="margin-bottom: 30px">Lamborghini</h3>
-                    <button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>
+                    <?php
+                    
+                    if($logado == true){
+                        echo '<button onclick="alugarCarro('.$ferrariID.')" class="alugue-carro">Eu quero! (1 mês de hoje)</button>';
+
+
+                        //echo "<a href='index.php?alugue_carro=true'>Eu quero! (1 mês de hoje)</a>";
+                        // if($pegarCarroVar = true){
+                        //     $sqlquery = "INSERT INTO `locacao`(`DataInicio`, `DataFim`, `cliente_idCliente`, `carro_idCarro`) VALUES 
+                        //         (".date('Y/m/d'). ",".date('Y/m/d').",'$loginId', '1')";
+                        //     echo "<script language='javascript' type='text/javascript'>
+                        //         alert('".date('Y/m/d')."')</script>";
+                        //     if ($connect->query($sqlquery) === true) {
+                        //         echo "<script language='javascript' type='text/javascript'>
+                        //         alert('conexao certa');</script>";
+                        //     } else {
+                        //         echo "Error: " . $sqlquery . "<br>" . $connect->error;
+                        //     }
+                        // }else{
+                        //     echo "<script language='javascript' type='text/javascript'>
+                        //         alert('No :(')</script>";
+                        // }
+
+
+                    }else{
+                        echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero! (2 mês de hoje)</button>';
+                    }
+                    
+                    ?>
+                    
                 </div>
             </div>
             <div class="third">
@@ -162,7 +246,7 @@
         </details>
     </div>
 
-    <div class="form-p">
+    <!-- <div class="form-p">
         <h2 class="text-center">Faça uma pergunta: </h2>
         <form id="form-pergunta">
             <label for="seuNome">Nome:</label><br>
@@ -171,14 +255,9 @@
             <textarea id="pergunta" name="pergunta" rows="4"></textarea><br>
             <input type="submit" class="botao-pergunta" value="Enviar" style="margin-top: 1rem"><br>
         </form>
-    </div>
+    </div> -->
 
     <div id="modal-login" class="modal">
-    <?php 
-        if($logado == 1){
-            echo '<script type=text/javascript>SumirModalL(); window.alert("Pedido feito com sucesso! Cheque seu email para confirmar e agendar a data.")</script>';
-        }
-    ?>
         <div class="modal-content">
             <span onclick="SumirModalL()" class="close">&times;</span>
             <h2>Preencha o Login: </h2> <hr>
@@ -225,6 +304,25 @@
             </ul>
         </div>
     </footer>
+
+    <script type="text/javascript">
+        var alugarCarroBotao = function(numero){
+            switch(numero){
+                case 1:
+                    <?php alugarCarro($ferrariID);?>
+                    break;
+                case 2:
+                    <?php alugarCarro($lamboID); ?>
+                    break;
+                case 3:
+                    <?php alugarCarro($mustangID); ?>
+                    break;
+                default:
+                    alert("Algo de errado com o codigo :(")
+            }
+            
+        }
+    </script>
 
     <script src="script.js"></script>
 

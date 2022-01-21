@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $cpf = $_POST['Cpf'];
 $logar = $_POST['logar'];
 $senha = $_POST['Senha'];
@@ -13,7 +15,10 @@ $connect = mysqli_connect('localhost','root','', 'vigono');
         .href='index.php';</script>";
         die();
       }else{
-        setcookie("Cpf",$cpf);
+        setcookie("Cpf", $cpf);
+        $row = mysqli_fetch_row($verifica);
+        $rowId = $row[0];
+        $_SESSION['sessaoId'] = $rowId;
         header("Location:index.php");
       }
   }else{

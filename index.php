@@ -1,12 +1,19 @@
 <?php
     session_start();
 
-    //echo $_SESSION['sessaoId'];
-    //$login_cookie = $_COOKIE['Cpf'];
-
     $ferrariID = 1;
     $lamboID = 2;
     $mustangID = 3;
+    
+    $curtoID = 1;
+    $longoID = 2;
+
+    $ferrariUrl = "?ferrari=true";
+    $lamboUrl = "?lamborghini=true";
+    $mustangUrl = "?mustang=true";
+
+    $curtoUrl = "?curto=true";
+    $longoUrl = "?longo=true";
 
     $connect = mysqli_connect('localhost','root','', 'vigono');
     if ($connect->connect_error) {
@@ -20,12 +27,13 @@
         $logado = false;
     }
 
+
     function redirect(){
-        echo "<script language='javascript' type='text/javascript'>
-            alert('$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" != "index.php')</script>";
-        //if("$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" != "index.php"){}
-        //header('Location: ' . "index.php", true);
-        //die();
+        $url = "localhost/VigonoMacchine/index.php";
+        if("$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" != $url){
+            header('Location: ' . "index.php", true);
+            die();
+        }
     }
 
 
@@ -66,12 +74,27 @@
         }
     }
 
+    function assinarPlano($idPlano){
+        global $loginId, $connect;
+
+        $sqlquery = "UPDATE `cliente` SET `plano_idPlano` = $idPlano WHERE idCliente = '$loginId'";
+        echo "<script language='javascript' type='text/javascript'>
+            alert('Plano assinado')</script>";
+        if (!$connect->query($sqlquery) == true) {
+            echo "Error: " . $sqlquery . "<br>" . $connect->error;
+        }
+    }
+
     if (isset($_GET['lamborghini'])) {
         alugarCarro($lamboID);
     }elseif(isset($_GET['ferrari'])) {
         alugarCarro($ferrariID);
     }elseif(isset($_GET['mustang'])) {
         alugarCarro($mustangID);
+    }elseif(isset($_GET['curto'])) {
+        assinarPlano($curtoID);
+    }elseif(isset($_GET['longo'])) {
+        assinarPlano($longoID);
     }
 ?>
 
@@ -123,7 +146,6 @@
             <div class="clear"></div>
         </div>
     </div>
-<!--    <p class="text-center v-border"><span>V</span></p>-->
 
     <div class="como-funciona border-bGold">
         <div class="comof-1">
@@ -134,7 +156,7 @@
                     <strong>Passo 3:</strong> Forneça seus dados pessoais e finalize a reserva.<br>
                     <strong>Passo 4:</strong> Apresente o código de reserva na agência e retire seu veículo.
                 </p>
-                <a href="#" class="botao-alugue">Alugue um Carro</a>
+                <a href="carros.php" class="botao-alugue">Alugue um Carro</a>
             </div>
         </div>
         <div class="comof-2 img"></div>
@@ -148,31 +170,32 @@
                     <div class="img car-img" style="background-image: url('imgs/cars/lambo-car.jpg');"></div>
                     <h3 style="margin-bottom: 30px">Lamborghini</h3>
                     <?php
-                    
-                    if($logado == true){
-                        //echo '<button onclick="alugarCarroBotao(1)" class="alugue-carro">Eu quero! (1 mês de hoje)</button>';
-                        echo "<a href='index.php?lamborghini=true'>Eu quero!</a>";
-                        
-                    }else{
-                        echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero! (2 mês de hoje)</button>';
-                    }
-                    
-                    ?>
-                    
+                    //LOGICA DE LOCACAO
+                    if($logado == true){echo "<a id='alugue_carros' href='index.php$lamboUrl'>Eu quero!</a>";}
+                    else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
+                    ?>                    
                 </div>
             </div>
             <div class="third">
                 <div class="card">
                     <div class="img car-img" style="background-image: url('imgs/cars/ferrari-car.jpeg');"></div>
                     <h3 style="margin-bottom: 30px">Ferrari</h3>
-                    <button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>
+                    <?php
+                    //LOGICA DE LOCACAO
+                    if($logado == true){echo "<a id='alugue_carros' href='index.php$ferrariUrl'>Eu quero!</a>";}
+                    else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
+                    ?>
                 </div>
             </div>
             <div class="third">
                 <div class="card">
                     <div class="img car-img" style="background-image: url('imgs/cars/mustang-car.jpg');"></div>
                     <h3 style="margin-bottom: 30px">Mustang</h3>
-                    <button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>
+                    <?php
+                    //LOGICA DE LOCACAO
+                    if($logado == true){echo "<a id='alugue_carros' href='index.php$mustangUrl'>Eu quero!</a>";}
+                    else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
+                    ?>
                 </div>
             </div>
         </div>
@@ -189,13 +212,17 @@
                         <p class="titulo-plano">CURTO PRAZO</p>
                         <h3>R$<span>599</span>,00<br>
                         por semana</h3>
-                        <p class="normas">Permanência mínima de 4 semanas ou cobrança de multa contratual (R$800)<br>
+                        <p class="normas">Permanência mínima de 3 meses ou cobrança de multa contratual (R$800)<br>
                             Sem cobrança por kms adicionais<br>
                             Sistema de monitoramento mais seguro do mercado<br>
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semanal automática, sem troca do veículo</p>
-                        <button onclick="AparecerModalL()" class="assine">Assine</button>
+                            <?php
+                            //LOGICA DE LOCACAO
+                            if($logado == true){echo "<a class='assine' href='index.php$curtoUrl'>Eu quero!</a>";}
+                            else{echo '<button onclick="AparecerModalL()" class="assine">Assinar</button>';}
+                            ?>
                     </div>
                 </div>
             </div>
@@ -212,7 +239,11 @@
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semestral não automática, com troca do veículo</p>
-                        <button onclick="AparecerModalL()" class="assine">Assine</button>
+                        <?php
+                            //LOGICA DE LOCACAO
+                            if($logado == true){echo "<a class='assine' href='index.php$longoUrl'>Eu quero!</a>";}
+                            else{echo '<button onclick="AparecerModalL()" class="assine">Assinar</button>';}
+                            ?>
                     </div>
                 </div>
             </div>
@@ -243,17 +274,6 @@
                 nossas redes sociais como Instagram e Facebook. Caso tenha alguma dúvida, conte conosco 😉</p>
         </details>
     </div>
-
-    <!-- <div class="form-p">
-        <h2 class="text-center">Faça uma pergunta: </h2>
-        <form id="form-pergunta">
-            <label for="seuNome">Nome:</label><br>
-            <input type="text" id="seuNome" name="seuNome"><br>
-            <label for="pergunta">Sobrenome:</label><br>
-            <textarea id="pergunta" name="pergunta" rows="4"></textarea><br>
-            <input type="submit" class="botao-pergunta" value="Enviar" style="margin-top: 1rem"><br>
-        </form>
-    </div> -->
 
     <div id="modal-login" class="modal">
         <div class="modal-content">
@@ -304,9 +324,9 @@
     </footer>
 
     <script type="text/javascript">
-        function alugarCarroBotao(numero){
-            $.ajax({url:"alugue.php", success:function(numero){console.log(numero)}
-            })
+        var url = "http://localhost/VigonoMacchine/index.php";
+        if(window.location.href != url){
+            window.location.replace("http://localhost/VigonoMacchine/index.php");
         }
     </script>
 

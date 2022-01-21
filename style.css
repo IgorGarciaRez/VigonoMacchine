@@ -249,7 +249,7 @@ body{
     background-position: center;
 }
 
-.alugue-carro, .veja-carro{
+a#alugue_carros, .alugue-carro, .veja-carro{
     padding: 10px 20px;
     background-color: transparent;
     border-radius: 20px;
@@ -265,7 +265,7 @@ body{
     width: 100%;
 }
 
-.alugue-carro:hover, .veja-carro:hover{
+a#alugue_carros:hover, .alugue-carro:hover, .veja-carro:hover{
     cursor: pointer;
     background-color: #009344;
     border-color: transparent;

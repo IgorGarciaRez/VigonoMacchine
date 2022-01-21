@@ -1,3 +1,42 @@
+<?php
+    session_start();
+    
+    $curtoID = 1;
+    $longoID = 2;
+
+    $curtoUrl = "?curto=true";
+    $longoUrl = "?longo=true";
+
+    $connect = mysqli_connect('localhost','root','', 'vigono');
+    if ($connect->connect_error) {
+        die("Connection failed: " 
+            . $connect->connect_error);
+    }
+    if(isset($_SESSION['sessaoId'])){
+        $logado = true;
+        $loginId = $_SESSION['sessaoId'];
+    }else{
+        $logado = false;
+    }
+
+    function assinarPlano($idPlano){
+        global $loginId, $connect;
+
+        $sqlquery = "UPDATE `cliente` SET `plano_idPlano` = $idPlano WHERE idCliente = '$loginId'";
+        echo "<script language='javascript' type='text/javascript'>
+            alert('Plano assinado')</script>";
+        if (!$connect->query($sqlquery) == true) {
+            echo "Error: " . $sqlquery . "<br>" . $connect->error;
+        }
+    }
+    if(isset($_GET['curto'])) {
+        assinarPlano($curtoID);
+    }elseif(isset($_GET['longo'])) {
+        assinarPlano($longoID);
+    }
+?>
+
+
 <html lang="pt">
 <head>
     <title>Planos</title>
@@ -14,14 +53,19 @@
     <link rel="shortcut icon" type="imagex/png" href="imgs/Logos/Logo1.ico">
 </head>
 <body>
+    
     <header id="header" class="img">
         <div style="display: flex;">
-            <a class="logo img" href="index.html"></a>
+            <a class="logo img" href="index.php"></a>
             <ul class="menu">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="quemSomos.html"><i class="fas fa-users"></i>Quem Somos</a></li>
-                <li><a href="carros.html"><i class="fas fa-car"></i>Carros</a></li>
-                <li><a href="planos.html"><i class="fas fa-map"></i>Planos</a></li>
+                <li><a href="carros.php"><i class="fas fa-car"></i>Carros</a></li>
+                <li><a href="planos.php"><i class="fas fa-map"></i>Planos</a></li>
+                <li><?php
+                    if($logado)echo '<a href="logout.php?token='.session_id().'">Sair</a>';
+                    else{echo "<button onclick='AparecerModalL()' class='botao-login'> <i class='fas fa-sign-in-alt'></i>Login</button>";}
+                ?></li>
             </ul>
             <ul class="social-medias">
                 <li><a target="_blank" href="https://instagram.com"><i class="fab fa-instagram-square"></i></a></li>
@@ -65,7 +109,11 @@
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semanal automática, sem troca do veículo</p>
-                        <button onclick="AparecerModalP()" id="botao-plano1" class="assine">Assine</button>
+                        <?php
+                            //LOGICA DE LOCACAO
+                            if($logado == true){echo "<a class='assine' href='planos.php$curtoUrl'>Eu quero!</a>";}
+                            else{echo '<button onclick="AparecerModalL()" class="assine">Assinar</button>';}
+                        ?>
                     </div>
                 </div>
             </div>
@@ -82,29 +130,50 @@
                             Assistência 24 horas<br>
                             Pacote proteção pelo menor preço do mercado<br>
                             Renovação semestral não automática, com troca do veículo</p>
-                        <button onclick="AparecerModalP()" id="botao-plano2" class="assine">Assine</button>
+                        <?php
+                            //LOGICA DE LOCACAO
+                            if($logado == true){echo "<a class='assine' href='planos.php$longoUrl'>Eu quero!</a>";}
+                            else{echo '<button onclick="AparecerModalL()" class="assine">Assinar</button>';}
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="modal-planos" class="modal">
+    <div id="modal-login" class="modal">
         <div class="modal-content">
-            <span onclick="SumirModalP()" class="close">&times;</span>
-            <h2>Preencha o formulário: </h2> <hr>
-            <form id="form-planos">
-                <label for="plano-pnome">Nome:</label><br>
-                <input type="text" id="plano-pnome" name="plano-pnome"><br>
-                <label for="plano-snome">Sobrenome:</label><br>
-                <input type="text" id="plano-snome" name="plano-snome"><br>
-                <label for="plano-cpfform">CPF:</label><br>
-                <input type="text" id="plano-cpfform" name="plano-cpfform"><br>
-                <label for="plano-telform">Telefone:</label><br>
-                <input type="text" id="plano-telform" name="plano-telform"><br>
-                <label for="plano-creditC">Cartao de Credito:</label><br>
-                <input type="text" id="plano-creditC" name="plano-creditC"><br>
-                <input type="submit" id="plano-submit" value="Enviar" style="margin-top: 1rem">
+            <span onclick="SumirModalL()" class="close">&times;</span>
+            <h2>Preencha o Login: </h2> <hr>
+            <form id="form-login" method="POST" action="login.php">
+                <label for="Cpf">Cpf:</label><br>
+                <input type="text" id="login-Cpf" name="Cpf"><br>
+                <label for="Senha">Senha:</label><br>
+                <input type="password" id="senha-login" name="Senha" minlength="8" required><br>
+
+                <input type="submit" id="logar" value="Logar" name="logar" style="margin-top: 1rem">
+
+                <input type="button" onclick="SumirModalL(); AparecerModalC()" value="Cadastrar" class="botao-cadastro">
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-cadastro" class="modal">
+        <div class="modal-content">
+            <span onclick="SumirModalC()" class="close">&times;</span>
+            <h2>Preencha o formulário de Cadastro: </h2> <hr>
+            <form id="form-cadastro" name="cadCliente" method="POST" action="cadastro.php">
+                <label for="nome">Nome:</label><br>
+                <input type="text" name="nome"><br>
+                <label for="Cpf">CPF:</label><br>
+                <input type="text" name="Cpf"><br>
+                <label for="Email">Email:</label><br>
+                <input type="text" name="Email"><br>
+                <label for="Senha">Senha:</label><br>
+                <input type="password" name="Senha" minlength="8" required><br>
+
+
+                <input type="submit" name="botao-enviar-cadastro">
             </form>
         </div>
     </div>
@@ -120,7 +189,15 @@
         </div>
     </footer>
 
+    <script type="text/javascript">
+        var url = "http://localhost/VigonoMacchine/planos.php";
+        if(window.location.href != url){
+            window.location.replace("http://localhost/VigonoMacchine/planos.php");
+        }
+    </script>
+
     <script src="script.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 </body>
 </html>

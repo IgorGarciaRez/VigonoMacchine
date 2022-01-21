@@ -28,15 +28,6 @@
     }
 
 
-    function redirect(){
-        $url = "localhost/VigonoMacchine/index.php";
-        if("$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" != $url){
-            header('Location: ' . "index.php", true);
-            die();
-        }
-    }
-
-
     function add_months($months, DateTime $dateObject) 
     {
         $next = new DateTime($dateObject->format('Y-m-d'));
@@ -68,7 +59,7 @@
         $sqlquery = "INSERT INTO `locacao`(`DataInicio`, `DataFim`, `cliente_idCliente`, `carro_idCarro`) VALUES 
             ('$data', '$datafinal', '$loginId', '$numeroCarro')";
         echo "<script language='javascript' type='text/javascript'>
-            alert('você poderá alugar o carro em um período de 1 mês a partir de hoje($datafinal)')</script>";
+            alert('Você poderá alugar o carro em um período de 1 mês a partir de hoje (até $datafinal)')</script>";
         if (!$connect->query($sqlquery) == true) {
             echo "Error: " . $sqlquery . "<br>" . $connect->error;
         }
@@ -118,12 +109,12 @@
     
     <header id="header" class="img">
         <div style="display: flex;">
-            <a class="logo img" href="index.html"></a>
+            <a class="logo img" href="index.php"></a>
             <ul class="menu">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="quemSomos.html"><i class="fas fa-users"></i>Quem Somos</a></li>
-                <li><a href="carros.html"><i class="fas fa-car"></i>Carros</a></li>
-                <li><a href="planos.html"><i class="fas fa-map"></i>Planos</a></li>
+                <li><a href="carros.php"><i class="fas fa-car"></i>Carros</a></li>
+                <li><a href="planos.php"><i class="fas fa-map"></i>Planos</a></li>
                 <li><?php
                     if($logado)echo '<a href="logout.php?token='.session_id().'">Sair</a>';
                     else{echo "<button onclick='AparecerModalL()' class='botao-login'> <i class='fas fa-sign-in-alt'></i>Login</button>";}
@@ -210,7 +201,7 @@
                     <div class="planos-padding">
                         <p class="titulo-v">VIGONO.</p>
                         <p class="titulo-plano">CURTO PRAZO</p>
-                        <h3>R$<span>599</span>,00<br>
+                        <h3>R$<span>6.000</span>,00<br>
                         por semana</h3>
                         <p class="normas">Permanência mínima de 3 meses ou cobrança de multa contratual (R$800)<br>
                             Sem cobrança por kms adicionais<br>
@@ -231,7 +222,7 @@
                     <div class="planos-padding">
                         <p class="titulo-v">VIGONO.</p>
                         <p class="titulo-plano">LONGO PRAZO</p>
-                        <h3>R$<span>599</span>,00<br>
+                        <h3>R$<span>6.000</span>,00<br>
                         por semana</h3>
                         <p class="normas">Permanência mínima de 6 meses ou cobrança de multa contratual (R$1.600)<br>
                             Sem cobrança por kms adicionais<br>

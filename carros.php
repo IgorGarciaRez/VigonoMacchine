@@ -34,15 +34,6 @@
     }
 
 
-    function redirect(){
-        $url = "localhost/VigonoMacchine/carros.php";
-        if("$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" != $url){
-            header('Location: ' . "carros.php", true);
-            die();
-        }
-    }
-
-
     function add_months($months, DateTime $dateObject) 
     {
         $next = new DateTime($dateObject->format('Y-m-d'));
@@ -74,7 +65,7 @@
         $sqlquery = "INSERT INTO `locacao`(`DataInicio`, `DataFim`, `cliente_idCliente`, `carro_idCarro`) VALUES 
             ('$data', '$datafinal', '$loginId', '$numeroCarro')";
         echo "<script language='javascript' type='text/javascript'>
-            alert('você poderá alugar o carro em um período de 1 mês a partir de hoje($datafinal)')</script>";
+            alert('Você poderá alugar o carro em um período de 1 mês a partir de hoje(até $datafinal)')</script>";
         if (!$connect->query($sqlquery) == true) {
             echo "Error: " . $sqlquery . "<br>" . $connect->error;
         }
@@ -121,7 +112,7 @@
     
     <header id="header" class="img">
         <div style="display: flex;">
-            <a class="logo img" href="index.html"></a>
+            <a class="logo img" href="index.php"></a>
             <ul class="menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="quemSomos.html"><i class="fas fa-users"></i>Quem Somos</a></li>
@@ -149,7 +140,7 @@
                         <h3 style="margin-bottom: 30px">Lamborghini</h3>
                         <?php
                             if($logado == true){echo "<a id='alugue_carros' href='carros.php$lamboUrl'>Eu quero!</a>";}
-                            else{echo '<button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>';}
+                            else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
                         ?>
                     </div>
                 </div>
@@ -159,7 +150,7 @@
                         <h3 style="margin-bottom: 30px">Ferrari</h3>
                         <?php
                             if($logado == true){echo "<a id='alugue_carros' href='carros.php$ferrariUrl'>Eu quero!</a>";}
-                            else{echo '<button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>';}
+                            else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
                         ?>
                     </div>
                 </div>
@@ -169,7 +160,7 @@
                         <h3 style="margin-bottom: 30px">Mustang</h3>
                         <?php
                             if($logado == true){echo "<a id='alugue_carros' href='carros.php$mustangUrl'>Eu quero!</a>";}
-                            else{echo '<button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>';}
+                            else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
                         ?>
                     </div>
                 </div>
@@ -181,7 +172,7 @@
                         <h3 style="margin-bottom: 30px">McLaren</h3>
                         <?php
                             if($logado == true){echo "<a id='alugue_carros' href='carros.php$mcLarenUrl'>Eu quero!</a>";}
-                            else{echo '<button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>';}
+                            else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
                         ?>
                     </div>
                 </div>
@@ -191,7 +182,7 @@
                         <h3 style="margin-bottom: 30px">Mercedes</h3>
                         <?php
                             if($logado == true){echo "<a id='alugue_carros' href='carros.php$mercedesUrl'>Eu quero!</a>";}
-                            else{echo '<button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>';}
+                            else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
                         ?>
                     </div>
                 </div>
@@ -201,7 +192,7 @@
                         <h3 style="margin-bottom: 30px">Toyota Supra</h3>
                         <?php
                             if($logado == true){echo "<a id='alugue_carros' href='carros.php$supraUrl'>Eu quero!</a>";}
-                            else{echo '<button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>';}
+                            else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
                         ?>
                     </div>
                 </div>
@@ -213,7 +204,7 @@
                         <h3 style="margin-bottom: 30px">Rolls Royce</h3>
                         <?php
                             if($logado == true){echo "<a id='alugue_carros' href='carros.php$rollsRoyceUrl'>Eu quero!</a>";}
-                            else{echo '<button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>';}
+                            else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
                         ?>
                     </div>
                 </div>
@@ -223,7 +214,7 @@
                         <h3 style="margin-bottom: 30px">Bugatti</h3>
                         <?php
                             if($logado == true){echo "<a id='alugue_carros' href='carros.php$bugattiUrl'>Eu quero!</a>";}
-                            else{echo '<button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>';}
+                            else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
                         ?>
                     </div>
                 </div>
@@ -233,11 +224,28 @@
                         <h3 style="margin-bottom: 30px">BMW</h3>
                         <?php
                             if($logado == true){echo "<a id='alugue_carros' href='carros.php$bmwUrl'>Eu quero!</a>";}
-                            else{echo '<button onclick="AparecerModalC()" class="alugue-carro">Eu quero!</button>';}
+                            else{echo '<button onclick="AparecerModalL()" class="alugue-carro">Eu quero!</button>';}
                         ?>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="modal-login" class="modal">
+        <div class="modal-content">
+            <span onclick="SumirModalL()" class="close">&times;</span>
+            <h2>Preencha o Login: </h2> <hr>
+            <form id="form-login" method="POST" action="login.php">
+                <label for="Cpf">Cpf:</label><br>
+                <input type="text" id="login-Cpf" name="Cpf"><br>
+                <label for="Senha">Senha:</label><br>
+                <input type="password" id="senha-login" name="Senha" minlength="8" required><br>
+
+                <input type="submit" id="logar" value="Logar" name="logar" style="margin-top: 1rem">
+
+                <input type="button" onclick="SumirModalL(); AparecerModalC()" value="Cadastrar" class="botao-cadastro">
+            </form>
         </div>
     </div>
 
